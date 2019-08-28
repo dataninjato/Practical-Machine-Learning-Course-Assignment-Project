@@ -191,6 +191,8 @@ summary(results)
 ## rf   0.9895188 0.9945636 0.9963742 0.9955685 0.9975825 0.9991944    0
 ```
 
+The in-model-building 10 fold cross-validation process resulted in a mean out-of-sample error of 0.3824092%.
+
 
 ```r
 # compare accuracy of models
@@ -273,7 +275,7 @@ print(performance)
 
 
 Very good! the RandomForest model achieves an 99.9490186% accuracy on this unseen data set, which is what he hoped for. We can conclude that this final model is not likely be overfitted and may perform well also on the official test cases.
-Generally we expect an generalization error / out of sample error greater than in the sample. In this case it is -98.9490186%.
+Generally we expect an generalization error / out of sample error greater than in the sample. In this case it is 0.0509814%.
 
 ## Diagnosis
 

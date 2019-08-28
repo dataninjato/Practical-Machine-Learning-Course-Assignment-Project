@@ -140,6 +140,8 @@ results <- resamples(list(lda=fit.lda, cart=fit.cart, gbm=fit.gbm, svm=fit.svm, 
 summary(results)
 ```
 
+The in-model-building 10 fold cross-validation process resulted in a mean out-of-sample error of `r (1 - summary(results)$values[,9][4]) * 100`%.
+
 ```{r}
 # compare accuracy of models
 dotplot(results)
@@ -160,7 +162,7 @@ print(performance)
 
 
 Very good! the RandomForest model achieves an `r performance$overall[1]*100`% accuracy on this unseen data set, which is what he hoped for. We can conclude that this final model is not likely be overfitted and may perform well also on the official test cases.
-Generally we expect an generalization error / out of sample error greater than in the sample. In this case it is `r 1-performance$overall[1]*100`%.
+Generally we expect an generalization error / out of sample error greater than in the sample. In this case it is `r (1-performance$overall[1])*100`%.
 
 ## Diagnosis
 
