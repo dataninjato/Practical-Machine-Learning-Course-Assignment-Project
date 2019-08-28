@@ -160,6 +160,7 @@ print(performance)
 
 
 Very good! the RandomForest model achieves an `r performance$overall[1]*100`% accuracy on this unseen data set, which is what he hoped for. We can conclude that this final model is not likely be overfitted and may perform well also on the official test cases.
+Generally we expect an generalization error / out of sample error greater than in the sample. In this case it is `r 1-performance$overall[1]*100`%.
 
 ## Diagnosis
 
@@ -174,7 +175,7 @@ varimportance
 
 Now we use our RandomForest model with the assigned official test data set and its 20 observations to predict the classe for each observation for course submission.
 
-We expect an generalization error / out of sample error greater than in sample, although the previous prediction on data.val was even higher. As it cannot be expected again a high accuracy is needed to have all 20 cases predicted correctly.
+We account for an generalization error / out of sample error greater than seen with training and validation data set.
 
 ```{r}
 # predict 20 test case with the best model

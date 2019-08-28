@@ -197,7 +197,7 @@ summary(results)
 dotplot(results)
 ```
 
-![](08-PML-Course-project_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+![](08-PML-Course-project_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 ```r
 # summarize Best Model
@@ -241,10 +241,10 @@ print(performance)
 ## 
 ##           Reference
 ## Prediction    A    B    C    D    E
-##          A 1116    1    0    0    0
-##          B    0  758    0    1    0
-##          C    0    0  684    0    0
-##          D    0    0    0  642    0
+##          A 1116    0    0    0    0
+##          B    0  758    1    0    0
+##          C    0    0  683    0    0
+##          D    0    1    0  643    0
 ##          E    0    0    0    0  721
 ## 
 ## Overall Statistics
@@ -261,18 +261,19 @@ print(performance)
 ## Statistics by Class:
 ## 
 ##                      Class: A Class: B Class: C Class: D Class: E
-## Sensitivity            1.0000   0.9987   1.0000   0.9984   1.0000
-## Specificity            0.9996   0.9997   1.0000   1.0000   1.0000
-## Pos Pred Value         0.9991   0.9987   1.0000   1.0000   1.0000
-## Neg Pred Value         1.0000   0.9997   1.0000   0.9997   1.0000
+## Sensitivity            1.0000   0.9987   0.9985   1.0000   1.0000
+## Specificity            1.0000   0.9997   1.0000   0.9997   1.0000
+## Pos Pred Value         1.0000   0.9987   1.0000   0.9984   1.0000
+## Neg Pred Value         1.0000   0.9997   0.9997   1.0000   1.0000
 ## Prevalence             0.2845   0.1935   0.1744   0.1639   0.1838
-## Detection Rate         0.2845   0.1932   0.1744   0.1637   0.1838
-## Detection Prevalence   0.2847   0.1935   0.1744   0.1637   0.1838
-## Balanced Accuracy      0.9998   0.9992   1.0000   0.9992   1.0000
+## Detection Rate         0.2845   0.1932   0.1741   0.1639   0.1838
+## Detection Prevalence   0.2845   0.1935   0.1741   0.1642   0.1838
+## Balanced Accuracy      1.0000   0.9992   0.9993   0.9998   1.0000
 ```
 
 
 Very good! the RandomForest model achieves an 99.9490186% accuracy on this unseen data set, which is what he hoped for. We can conclude that this final model is not likely be overfitted and may perform well also on the official test cases.
+Generally we expect an generalization error / out of sample error greater than in the sample. In this case it is -98.9490186%.
 
 ## Diagnosis
 
@@ -316,7 +317,7 @@ varimportance
 
 Now we use our RandomForest model with the assigned official test data set and its 20 observations to predict the classe for each observation for course submission.
 
-We expect an generalization error / out of sample error greater than in sample, although the previous prediction on data.val was even higher. As it cannot be expected again a high accuracy is needed to have all 20 cases predicted correctly.
+We account for an generalization error / out of sample error greater than seen with training and validation data set.
 
 
 ```r
