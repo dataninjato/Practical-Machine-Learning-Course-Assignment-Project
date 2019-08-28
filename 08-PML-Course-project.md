@@ -197,7 +197,7 @@ summary(results)
 dotplot(results)
 ```
 
-![](08-PML-Course-project_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](08-PML-Course-project_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
 
 ```r
 # summarize Best Model
@@ -241,38 +241,38 @@ print(performance)
 ## 
 ##           Reference
 ## Prediction    A    B    C    D    E
-##          A 1116    0    0    0    0
-##          B    0  759    0    0    0
+##          A 1116    1    0    0    0
+##          B    0  758    0    1    0
 ##          C    0    0  684    0    0
-##          D    0    0    0  643    0
+##          D    0    0    0  642    0
 ##          E    0    0    0    0  721
 ## 
 ## Overall Statistics
 ##                                                
-##                Accuracy : 1                    
-##                  95% CI : (0.9991, 1)          
+##                Accuracy : 0.9995               
+##                  95% CI : (0.9982, 0.9999)     
 ##     No Information Rate : 0.2845               
 ##     P-Value [Acc > NIR] : < 0.00000000000000022
 ##                                                
-##                   Kappa : 1                    
+##                   Kappa : 0.9994               
 ##                                                
 ##  Mcnemar's Test P-Value : NA                   
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: A Class: B Class: C Class: D Class: E
-## Sensitivity            1.0000   1.0000   1.0000   1.0000   1.0000
-## Specificity            1.0000   1.0000   1.0000   1.0000   1.0000
-## Pos Pred Value         1.0000   1.0000   1.0000   1.0000   1.0000
-## Neg Pred Value         1.0000   1.0000   1.0000   1.0000   1.0000
+## Sensitivity            1.0000   0.9987   1.0000   0.9984   1.0000
+## Specificity            0.9996   0.9997   1.0000   1.0000   1.0000
+## Pos Pred Value         0.9991   0.9987   1.0000   1.0000   1.0000
+## Neg Pred Value         1.0000   0.9997   1.0000   0.9997   1.0000
 ## Prevalence             0.2845   0.1935   0.1744   0.1639   0.1838
-## Detection Rate         0.2845   0.1935   0.1744   0.1639   0.1838
-## Detection Prevalence   0.2845   0.1935   0.1744   0.1639   0.1838
-## Balanced Accuracy      1.0000   1.0000   1.0000   1.0000   1.0000
+## Detection Rate         0.2845   0.1932   0.1744   0.1637   0.1838
+## Detection Prevalence   0.2847   0.1935   0.1744   0.1637   0.1838
+## Balanced Accuracy      0.9998   0.9992   1.0000   0.9992   1.0000
 ```
 
 
-Very good! the RandomForest model achieves an 1 accuracy on this unseen data set, which is what he hoped for. We can conclude that this final model is not likely be overfitted and may perform well also on the official test cases.
+Very good! the RandomForest model achieves an 99.9490186% accuracy on this unseen data set, which is what he hoped for. We can conclude that this final model is not likely be overfitted and may perform well also on the official test cases.
 
 ## Diagnosis
 
@@ -280,7 +280,7 @@ We check what predictors are of highest importance in this algorithm and if this
 
 
 ```r
-varimportance <- varImp(fit.rf, 10)
+varimportance <- varImp(fit.rf)
 varimportance
 ```
 
@@ -346,5 +346,6 @@ print(pred.rf.testing.lean)
 This R markdown files is complete and runnable.
 However the rendering did only succeed from the console with
 
-`library("knitr")
-rmarkdown::render("08-PML-Course-project.Rmd")`
+`library("knitr")`
+
+`rmarkdown::render("08-PML-Course-project.Rmd")`
